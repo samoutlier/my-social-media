@@ -59,7 +59,7 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
           aria-expanded="false"
         >
           <img
-            src="https://github.com/mdo.png"
+            src="C:\Users\Khwaja Abdul Samad\Programming Courses\Projects\React\10-Social-Media\my-social-media\src\assets\ProfilePic.png"
             alt=""
             width="32"
             height="32"
