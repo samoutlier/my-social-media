@@ -27,6 +27,13 @@ const CreatePost = () => {
     addPost(userId, postTitle, postBody, reactions, tags);
   };
 
+  // userId
+  // title
+  // body
+  // id
+  // reactions
+  // tags
+
   return (
     <form className="create-post" onSubmit={handleSubmit}>
       <div className="mb-3">

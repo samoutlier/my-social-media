@@ -27,3 +27,26 @@
   margin-top: 50px;
   margin-left: 10%;
 }
+
+.welcome-message {
+  margin: 80px 10px;
+}
+
+.fetch-post-button {
+  margin: 12px 0px;
+}
+
+.posts-conatiner {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%; */
+}
+.card-body {
+  min-width: 450px;
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; */
+}
