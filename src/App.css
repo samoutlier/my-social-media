@@ -37,16 +37,17 @@
 }
 
 .posts-conatiner {
-  /* display: flex;
+  display: flex;
   flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: space-around;
-  height: 100%; */
 }
+
 .card-body {
   min-width: 450px;
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around; */
+}
+
+.loading-spinner {
+  margin: 100px 0px;
 }
