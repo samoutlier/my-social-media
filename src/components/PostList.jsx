@@ -5,20 +5,7 @@ import WelcomeMessage from "./WelcomeMessage";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PostList = () => {
-  const { postList, addInitialPosts } = useContext(PostListData);
-  let [fetching, setFetching] = useState(false);
-
-  useEffect(() => {
-    setFetching(true);
-    fetch('https://dummyjson.com/posts')
-      .then(res => res.json())
-      .then((data) => {
-        setFetching(false);
-        addInitialPosts(data.posts);
-      });
-  }, []);
-
-
+  const { postList, fetching } = useContext(PostListData);
 
   return <>
 

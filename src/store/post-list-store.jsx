@@ -1,10 +1,10 @@
-import { createContext, useReducer } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
 
 
 export const PostList = createContext({
   postList: [],
   addPost: () => { },
-  addInitialPosts: () => { },
+  fetching: false,
   deletePost: () => { },
 });
 
@@ -27,6 +27,8 @@ const postListReducer = (currPostList, action) => {
 const PostListProvider = ({ children }) => {
 
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
+  let [fetching, setFetching] = useState(false);
+
 
   const addInitialPosts = (posts) => {
     dispatchPostList({
@@ -54,12 +56,42 @@ const PostListProvider = ({ children }) => {
     });
   }
 
+  useEffect(() => {
+    setFetching(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetch('https://dummyjson.com/posts', { signal })
+      .then(res => res.json())
+      .then((data) => {
+        setFetching(false);
+        addInitialPosts(data.posts);
+      })
+      .catch((error) => {
+        if (error.name === 'AbortError') {
+          // Request was aborted, no need to do anything
+          console.log('Fetch aborted');
+        } else {
+          // Handle other errors
+          console.error('Fetch error:', error);
+          setFetching(false); // Reset fetching state in case of an error
+        }
+      });
+
+    return () => {
+      console.log("Cleaning up UseEffect");
+      controller.abort();
+    };
+
+  }, []);
+
+
   return (
     <PostList.Provider value={
       {
         postList,
+        fetching,
         addPost,
-        addInitialPosts,
         deletePost,
       }
     }>
